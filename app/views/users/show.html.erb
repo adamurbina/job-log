@@ -5,7 +5,7 @@
 <%= link_to "All Jobs", jobs_url%><br>
 <ul>
 <% @user.jobs.each do |j| %>
-  <li><%= link_to(j.property_name + " - " + j.client.company, "#" )%></li><br>
+  <li><%= link_to(j.property_name + " - " + j.client.company, job_url(j) )%></li><br>
 <% end %>
 </ul>
 <br><br>

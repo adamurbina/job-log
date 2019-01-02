@@ -3,7 +3,7 @@
 <ul>
 <% @jobs.each do |j| %>
 
-  <li><%= j.job_number + " : " + j.property_name %>
+  <li><%= link_to(j.job_number + " : " + j.property_name, job_url(j)) %>
 
 <% end %>
 </ul>
