@@ -1,0 +1,11 @@
+<h1>ALL JOBS</h1>
+
+<ul>
+<% @jobs.each do |j| %>
+
+  <li><%= j.job_number + " : " + j.property_name %>
+
+<% end %>
+</ul>
+
+<%= link_to("My Jobs", user_url(@user)) %>

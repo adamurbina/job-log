@@ -1,3 +1,13 @@
 <h1>Hello <%= @user.username %></h1>
 
+<h2>Your jobs:</h2>
+
+<%= link_to "All Jobs", jobs_url%><br>
+<ul>
+<% @user.jobs.each do |j| %>
+  <li><%= link_to(j.property_name + " - " + j.client.company, "#" )%></li><br>
+<% end %>
+</ul>
+<br><br>
+
 <%= link_to "Sign Out", logout_path, method: :delete%>
