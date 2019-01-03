@@ -3,12 +3,13 @@
 
   <p>
   Job Number: <%= @job.job_number %><br>
-  Proeprty Type: <%= @job.property_type %><br>
+  Property Type: <%= @job.property_type %><br>
   Appraiser: <%= @job.user.username %><br><br>
 
-  Client: <%= @job.client.company %><br>
+  Client: <%= link_to(@job.client.company, client_url(@job.client) )%><br>
   Contact: <%= @job.client.contact %><br><br>
 
-  Fee: $<%= @job.fee%><br></br>
+  Invoiced Fee: <%= @job.fee_string%><br>
+  Appraiser Split: <%= @job.appraiser_fee %><br></br>
 
 <%= link_to("My Jobs", user_url(@user)) %>

@@ -1,0 +1,10 @@
+<h1><%= @client.company %></h1>
+<h2>Contact: <%= @client.contact %></h2>
+
+<ul>
+<% @jobs.each do |j| %>
+
+  <li><%= link_to(j.job_number + " : " + j.property_name, job_url(j)) %>
+
+<% end %>
+</ul>

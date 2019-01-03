@@ -5,6 +5,9 @@ class User < ApplicationRecord
 
   validates :username, presence: true
   validates :username, uniqueness: true
-  
+
+  def split_string
+    (self.split * 100).to_s + "%"
+  end
 
 end
