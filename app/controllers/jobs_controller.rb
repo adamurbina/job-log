@@ -17,13 +17,16 @@ class JobsController < ApplicationController
   end
 
   def create
-      raise params.inspect
+      @job = Job.make_job(params["job"])
+      @job.user = current_user
+      @job.save
+      raise @job.inspect
   end
 
   private
 
   def job_params
-    ## TODO:
+    params.require(:job).permit(:property_name, :property_type, :fee, :client_company, client_attributes:[:company, :contact])
   end
 
 end
