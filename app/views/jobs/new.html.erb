@@ -1,0 +1,18 @@
+<h1>New Job Form</h1>
+
+<%= form_for(@job) do |f| %>
+  Property Name: <%= f.text_field :property_name %><br>
+  Property Type: <%= f.text_field :fee %><br>
+  Fee: <%= f.number_field :property_name %><br>
+  <br></br>
+
+  <%= f.collection_select :client_company, Client.all, :id, :company, include_blank: 'Select Client or Enter New'%><br>
+  <%= f.text_field :client_company, placeholder: "New Client Company" %>
+  
+
+  <br></br>
+  <%= f.submit %>
+
+<% end %>
+<br></br>
+<%= link_to("Cancel", user_url(@user)) %>
