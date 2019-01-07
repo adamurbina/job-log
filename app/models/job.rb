@@ -2,16 +2,15 @@ class Job < ApplicationRecord
   belongs_to :user
   belongs_to :client
 
-  def fee_string
-    "$" + self.fee.to_s.insert(-4, ",")
-  end
+  validates :property_name, presence: true
+  validates :property_type, presence: true
+  validates :client_id, presence: true
+  validates :fee, presence: true
+  validates :fee, numericality: { greater_than: 100}
 
-  def appraiser_fee
-    "$" + (self.fee * self.user.split).to_i.to_s.insert(-4, ",")
-  end
-
-  def self.make_job(params)
+  def self.make_job(params, user)
     job = Job.new
+    job.user_id = user.id
     job.property_name = params["property_name"]
     job.property_type = params["property_type"]
     job.fee = params["fee"]
@@ -23,7 +22,11 @@ class Job < ApplicationRecord
       job.set_client_company(params["client_company"])
     end
     job.save
-    job.job_number = Time.now.year.to_s + "-" + job.id.to_s
+    job_number = job.id.to_s
+    binding.pry
+    job.job_number = Time.now.year.to_s + "-" + job_number
+    job.save
+    job
   end
 
   def client_attributes(client_attributes)

@@ -1,15 +1,24 @@
 <h1>Hello <%= @user.username %></h1>
 <h3>Current Split: <%= @user.split_string %></h3>
 
-<%= link_to "All Jobs", jobs_url%><br>
+<h3>My Jobs</h3>
 <ul>
-<% @user.jobs.each do |j| %>
-  <li><%= link_to(j.property_name + " - " + j.client.company, job_url(j) )%></li><br>
+<% @user.user_jobs.each do |j| %>
+  <li><%= link_to(j.property_name + " - " + j.client_company, job_url(j) )%></li><br>
 <% end %>
 </ul>
+
+<h3>My Clients</h3>
+<ul>
+  <% @user.user_jobs.each do |j| %>
+    <li><%= link_to(j.property_name + " - " + j.client_company, job_url(j) )%></li><br>
+  <% end %>
+</ul>
+
 <br><br>
 
 <%= link_to("New Job", new_job_url) %>
 
 <br></br>
+<%= link_to "All Jobs", jobs_url%><br>
 <%= link_to "Sign Out", logout_path, method: :delete%>

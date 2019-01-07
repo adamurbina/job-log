@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  #before_action :require_login
+
+  skip_before_action :require_login, only: [:new, :create]
 
   def new
     @user = User.new
@@ -7,10 +8,7 @@ class UsersController < ApplicationController
 
   def show
       @user = User.find_by(id: params[:id])
-      if !logged_in? || current_user.id != @user.id
-          flash[:notice] = "Oops! You must log in to do that..."
-          redirect_to login_url
-      end
+      @clients = Client.where()
   end
 
   def create

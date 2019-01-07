@@ -1,5 +1,4 @@
 class JobsController < ApplicationController
-  #need something to stop unauthorized users from access
 
   def index
     @jobs = Job.all
@@ -17,10 +16,8 @@ class JobsController < ApplicationController
   end
 
   def create
-      @job = Job.make_job(params["job"])
-      @job.user = current_user
-      @job.save
-      raise @job.inspect
+      @job = Job.make_job(params["job"], current_user)
+      redirect_to job_url(@job)
   end
 
   private

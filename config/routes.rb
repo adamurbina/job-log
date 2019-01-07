@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :jobs
   resources :clients, only: [:index, :show]
 
-  get '/', to: 'sessions#new'
+  get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 

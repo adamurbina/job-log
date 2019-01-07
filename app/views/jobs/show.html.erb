@@ -9,7 +9,7 @@
   Client: <%= link_to(@job.client.company, client_url(@job.client) )%><br>
   Contact: <%= @job.client.contact %><br><br>
 
-  Invoiced Fee: <%= @job.fee_string%><br>
-  Appraiser Split: <%= @job.appraiser_fee %><br></br>
+  Invoiced Fee: <%= fee_string(@job) %><br>
+  Appraiser Split: <%= appraiser_fee(@job) %><br></br>
 
 <%= link_to("My Jobs", user_url(@user)) %>

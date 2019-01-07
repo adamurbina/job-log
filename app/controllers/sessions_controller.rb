@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+
+  skip_before_action :require_login, only: [:new, :create]
+  
   def new
   end
 
@@ -16,7 +19,7 @@ class SessionsController < ApplicationController
   def destroy
     log_out
     flash[:notice] = "Successfully logged out. Goodbye!"
-    redirect_to login_url
+    redirect_to '/login'
   end
 
 
